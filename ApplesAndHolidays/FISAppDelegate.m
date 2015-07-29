@@ -25,7 +25,7 @@
     
     NSArray *applesArray = [fruits filteredArrayUsingPredicate:applesArrayPredicate];
     
-    NSLog(@"\nfiltered array is %@\n",applesArray);
+//    NSLog(@"\nfiltered array is %@\n",applesArray);
     
     return [fruits filteredArrayUsingPredicate:applesArrayPredicate];
 }
@@ -47,26 +47,58 @@
     // search the database keys for the key == season
 
     //collect the keys of this SECOND dictionary, put into an array, and return this array
-
+//    NSLog(@"\n Season is %@ and [database[season] allKeys] is %@ ", season,  [database[season] allKeys]);
     return [database[season] allKeys];
 }
 
 - (NSArray*)suppliesInHoliday:(NSString*)holiday
                      inSeason:(NSString*)season
                    inDatabase:(NSDictionary*)database{
-        return nil;
+    //get [database[season] allValues], which is the dictionary containing the names of all the holidays in the specified season.
+    // parse the holiday specified by holiday, and return the array of values of the given holiday
+    
+
+        return database[season][holiday];
 }
 
 - (BOOL)holiday:(NSString*)holiday
      isInSeason:(NSString*)season
      inDatabase:(NSDictionary*)database{
-        return nil;
+    
+
+    NSArray* holidaysInSeasonInDatabase = [[self holidaysInSeason:season inDatabase:database]copy];
+//    NSLog(@"\nSeason is %@ and holidays array is %@",season, holidaysInSeasonInDatabase);
+    NSPredicate* holidayIsInSeasonInDatabasePredicate = [NSPredicate predicateWithFormat:@"self LIKE %@", holiday];
+//    NSLog(@"\nNSPredicate is %@",holidayIsInSeasonInDatabasePredicate);
+//    NSLog(@"\nSeason is %@ and holidays array is %@",season, holidaysInSeasonInDatabase);
+    
+    NSArray *filteredArray = [[holidaysInSeasonInDatabase filteredArrayUsingPredicate:holidayIsInSeasonInDatabasePredicate]  copy ];
+//    NSLog(@"\nfiltered array is %@, count is %lu ",filteredArray, [filteredArray count]);
+    
+    if ([filteredArray count] == 0) {
+        return NO;
+    } else{
+        return YES;
+    }
+
 }
 - (BOOL)supply:(NSString*)supply
    isInHoliday:(NSString*)holiday
       inSeason:(NSString*)season
     inDatabase:(NSDictionary*)database{
-        return nil;
+    
+    NSArray* suppliesInHoliday = [[self suppliesInHoliday:holiday
+                                                inSeason:(NSString*)season
+                                               inDatabase:(NSDictionary*)database] copy];
+    NSPredicate *suppliesInHolidayPredicate = [NSPredicate predicateWithFormat:@"self LIKE %@",supply];
+    
+    NSArray *filteredArray = [suppliesInHoliday filteredArrayUsingPredicate:suppliesInHolidayPredicate];
+    if ([ filteredArray count] == 0) {
+        return NO;
+    } else{
+        return YES;
+    }
+
 }
 - (NSDictionary*)addHoliday:(NSString*)holiday
                    toSeason:(NSString*)season
