@@ -103,15 +103,21 @@
 - (NSDictionary*)addHoliday:(NSString*)holiday
                    toSeason:(NSString*)season
                  inDatabase:(NSDictionary*)database{
-        return nil;
+    
+    database[season][holiday] = [@[] mutableCopy];
+        return database;
+    
 }
 - (NSDictionary*)addSupply:(NSString*)supply
                  toHoliday:(NSString*)holiday
                   inSeason:(NSString*)season
                 inDatabase:(NSDictionary*)database{
-        return nil;
+    
+    if (database[season][holiday]){
+        [database[season][holiday] addObject:supply];
+    }
+    return database;
 }
-
 /**
  
  * Implement your methods here.
