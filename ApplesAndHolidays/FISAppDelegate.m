@@ -52,10 +52,7 @@
 };
 
 -(BOOL)supply:(NSString *)supply isInHoliday:(NSString *)holiday inSeason:(NSString *)season inDatabase:(NSDictionary *)database{
-    NSLog(@"!!!!!!!!!!!!!!!!!!!!");
-    NSLog(@"%@", database[season][holiday]);
     BOOL check = [database[season][holiday] containsObject:supply];
-    NSLog(@"%hhd", check);
     return check;
 };
 
