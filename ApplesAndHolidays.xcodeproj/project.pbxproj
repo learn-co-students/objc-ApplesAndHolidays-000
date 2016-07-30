@@ -442,11 +442,7 @@
 			baseConfigurationReference = 104752A6662439600D9F9C6C /* Pods-ApplesAndHolidaysTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ApplesAndHolidays.app/ApplesAndHolidays";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ApplesAndHolidays/ApplesAndHolidays-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -466,11 +462,7 @@
 			baseConfigurationReference = EEC01D893488BFB2E3849EF3 /* Pods-ApplesAndHolidaysTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ApplesAndHolidays.app/ApplesAndHolidays";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ApplesAndHolidays/ApplesAndHolidays-Prefix.pch";
 				INFOPLIST_FILE = "ApplesAndHolidaysTests/ApplesAndHolidaysTests-Info.plist";
